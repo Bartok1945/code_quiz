@@ -5,3 +5,10 @@ Creating a quiz
     2a. Each question needs 4 possible answers and buttons with click events
 
 3. When quiz begins a counter set to 100 begins to count down.
+
+
+
+variables---
+-Score
+-Timer
+-

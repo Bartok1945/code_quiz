@@ -1,3 +1,4 @@
+//variables 
 var questions = [
     {
         title: "Who is Luke Skywalker/'s Father?" ;
@@ -7,22 +8,56 @@ var questions = [
     },
     {
         title: "Who trained Obi-Wan Kenobi?";
-        choices: ["Qui-Gon Jinn",  ];
-        answer: ;
+        choices: ["Qui-Gon Jinn", "Master Yoda", "Your Mom", "Luke Skywalker" ];
+        answer: "Qui-Gon Jinn";
     },
     {
-        title: ;
-        choices: [];
-        answer: ;
+        title: "What was the first planet destroyed by the Death Star?";
+        choices: ["Tatooine", "Alderan", "Naboo", "Hoth"];
+        answer: "Alderan";
     },
     {
-        title: ;
-        choices: [];
-        answer: ;
+        title: "What is the name of the primary starfighter used by the Rebellion?";
+        choices: ["Y-wing", "A-wing", "V-wing", "X-wing"];
+        answer: "X-wing";
     },
     {
-        title: ;
-        choices: [];
-        answer: ;
+        title: "What is Chewbacca/'s home planet?";
+        choices: ["Kashyyyk", "Dantooine", "Mustafar", "Geonosis"];
+        answer: "Kashyyyk";
     },
-]
+];
+
+var score = 0;
+
+var timer = 100;
+
+
+//functions
+function addToScore() {
+
+}
+
+function countdown() {
+
+}
+
+function deductTime() {
+
+}
+
+function addTime(){
+
+}
+
+function 
+
+
+
+
+//for loop to cycle through questions
+for(var i = 0; i < questions.length; i++) {
+
+}
+
+//event listeners
