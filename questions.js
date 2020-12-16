@@ -28,36 +28,32 @@ var questions = [
     },
 ];
 
-var score = 0;
+var score = ;
 
-var timer = 100;
+var time = 100;
+
+var secondsLeft = document.querySelector(".seconds-left");
 
 
 //functions
-function addToScore() {
-
-}
 
 function countdown() {
-
+count down from 100
 }
 
-function deductTime() {
-
+function addOrSubTime() {
+if correct add 5 seconds
+else subtract 5 seconds
 }
 
-function addTime(){
-
-}
-
-function 
 
 
 
 
-//for loop to cycle through questions
+//for loop to cycle through questions do I even need this???
 for(var i = 0; i < questions.length; i++) {
 
 }
 
 //event listeners
+document.getElementById("start").addEventListener("click", countdown);
