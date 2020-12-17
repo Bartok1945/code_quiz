@@ -49,7 +49,7 @@ function setTime() {
         time--;
         secondsLeft.textContent = "Time Left " + time;
 
-        if (time === 0) {
+        if (time === 0 || currentIndex > 4) {
             clearInterval(timerInterval);
     }
 
@@ -72,11 +72,7 @@ function startQuiz() {
     setTime();
 }
 
-function endQuiz() {
-if (time === 0) {
-    
-}
-}
+
 
 function checkAnswer() {
     if (this.textContent === questions[currentIndex].answer) {
@@ -86,11 +82,13 @@ function checkAnswer() {
         time -= 5;
     }
     currentIndex++;
+    if (currentIndex === questions.length) {
+        endQuiz();
+    }
     renderQuestion();
+
 }
-// function countdown() {
-// count down from 100
-// }
+
 
 
 
