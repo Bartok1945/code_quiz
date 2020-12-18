@@ -42,6 +42,14 @@ var secondsLeft = document.querySelector(".seconds-left");
 
 var currentIndex;
 
+var startBtn = document.getElementById("click-start");
+
+var showQuestions = document.querySelector(".wrapper")
+
+var enterInitials = document.getElementById("enter-initials")
+
+
+var initials = document.getElementById("initials");
 
 //functions
 function setTime() {
@@ -51,21 +59,23 @@ function setTime() {
 
         if (time === 0 || currentIndex > 4) {
             clearInterval(timerInterval);
-    }
+        }
 
     }, 1000);
 }
 
 function renderQuestion() {
-    document.querySelector(".questions").textContent = questions[currentIndex].title;
-    document.querySelector("#choiceA").textContent = questions[currentIndex].choices[0];
-    document.querySelector("#choiceB").textContent = questions[currentIndex].choices[1];
-    document.querySelector("#choiceC").textContent = questions[currentIndex].choices[2];
-    document.querySelector("#choiceD").textContent = questions[currentIndex].choices[3];
+    document.querySelector(".questions").textContent = questions[currentIndex]?.title;
+    document.querySelector("#choiceA").textContent = questions[currentIndex]?.choices[0];
+    document.querySelector("#choiceB").textContent = questions[currentIndex]?.choices[1];
+    document.querySelector("#choiceC").textContent = questions[currentIndex]?.choices[2];
+    document.querySelector("#choiceD").textContent = questions[currentIndex]?.choices[3];
 
 }
 
 function startQuiz() {
+    startBtn.style.display = 'none';
+    showQuestions.style.display = "block";
     currentIndex = 0;
     time = 100;
     renderQuestion();
@@ -83,9 +93,37 @@ function checkAnswer() {
     }
     currentIndex++;
     if (currentIndex === questions.length) {
-        endQuiz();
+        showQuestions.style.display = 'none';
+        enterInitials.style.display = "block";
+        console.log("Whats up ")
     }
     renderQuestion();
+
+}
+
+function submitScore() {
+    var scoresArr = JSON.parse(localStorage.getItem("Scores")) || [];
+    scoresArr.push({
+        totalScore: initials.value + " - " + time,
+    })
+    localStorage.setItem("Scores", JSON.stringify(scoresArr))
+    window.location.assign("highscores.html")
+    displayScores();
+}
+
+function displayScores() {
+    if (localStorage.getItem("Scores") === null) {
+        scoresArr = [];
+    }
+    else {
+        scoresArr = JSON.parse(localStorage.getItem("Scores"));
+    }
+    scoresArr.forEach((score)=>{
+        console.log("score ", score);
+    })
+    var appendListItems = document.getElementById("highscore");
+    var listItems = document.createElement("li");
+    listItems.textContent = " ";
 
 }
 
@@ -98,3 +136,5 @@ for (var i = 0; i < answerBtns.length; i++) {
     answerBtns[i].addEventListener("click", checkAnswer);
 }
 document.getElementById("start").addEventListener("click", startQuiz);
+
+document.querySelector(".highscore").addEventListener("click", submitScore);
