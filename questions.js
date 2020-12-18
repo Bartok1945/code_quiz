@@ -1,7 +1,4 @@
-//High score page pops up after last question local storage
-//styling- hiding stuff
-//end game function when timer is zero or all questions answered
-//reset highscore function
+
 
 
 //variables 
@@ -33,25 +30,18 @@ var questions = [
         answer: "Kashyyyk",
     },
 ];
-
 var score = 0;
-
 var time = 100;
-
 var secondsLeft = document.querySelector(".seconds-left");
-
 var currentIndex;
-
 var startBtn = document.getElementById("click-start");
-
 var showQuestions = document.querySelector(".wrapper")
-
 var enterInitials = document.getElementById("enter-initials")
-
-
 var initials = document.getElementById("initials");
 
 //functions
+
+//Starts Timer
 function setTime() {
     var timerInterval = setInterval(function () {
         time--;
@@ -64,6 +54,7 @@ function setTime() {
     }, 1000);
 }
 
+//Renders Questions and possible answers
 function renderQuestion() {
     document.querySelector(".questions").textContent = questions[currentIndex]?.title;
     document.querySelector("#choiceA").textContent = questions[currentIndex]?.choices[0];
@@ -73,6 +64,7 @@ function renderQuestion() {
 
 }
 
+//Hides splash page and show question wrapper
 function startQuiz() {
     startBtn.style.display = 'none';
     showQuestions.style.display = "block";
@@ -82,8 +74,12 @@ function startQuiz() {
     setTime();
 }
 
-
-
+//attaches checkAnswer listener to the answer buttons
+var answerBtns = document.querySelectorAll(".answerbtn")
+for (var i = 0; i < answerBtns.length; i++) {
+    answerBtns[i].addEventListener("click", checkAnswer);
+}
+//Validating answers and checks quiz progress
 function checkAnswer() {
     if (this.textContent === questions[currentIndex].answer) {
         time += 5;
@@ -95,12 +91,10 @@ function checkAnswer() {
     if (currentIndex === questions.length) {
         showQuestions.style.display = 'none';
         enterInitials.style.display = "block";
-        console.log("Whats up ")
     }
     renderQuestion();
-
 }
-
+//Storing scores in localStorage 
 function submitScore() {
 
     var scoresArr = JSON.parse(localStorage.getItem("Scores")) || [];
@@ -108,34 +102,8 @@ function submitScore() {
     localStorage.setItem("Scores", JSON.stringify(scoresArr))
     window.location.assign("highscores.html")
 }
-
-// function displayScores() {
-//     window.location.assign("highscores.html")
-//     console.log("works");
-//     if (localStorage.getItem("Scores") === null) {
-//         scoresArr = [];
-//     }
-//     else {
-//         console.log("works");
-//         scoresArr = JSON.parse(localStorage.getItem("Scores"));
-//     }
-//     scoresArr.forEach((score)=>{
-//         var appendListItems = document.querySelector(".highscore");
-//     var listItems = document.createElement("li");
-//     listItems.textContent = score;
-//     appendListItems.append(listItems);
-//         console.log("score ", score);
-//     })
-// }
-
-
-
-
 //event listeners
-var answerBtns = document.querySelectorAll(".answerbtn")
-for (var i = 0; i < answerBtns.length; i++) {
-    answerBtns[i].addEventListener("click", checkAnswer);
-}
+
 document.getElementById("start").addEventListener("click", startQuiz);
 
 document.querySelector(".highscore").addEventListener("click", submitScore);

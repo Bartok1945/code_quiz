@@ -1,10 +1,25 @@
+//variable
+var homeBtn = document.getElementById("home");
+var clearBtn = document.getElementById("clear"); 
+var highScores = document.querySelector(".highscore");
+
+//event listener and quiz reset
+homeBtn.addEventListener("click", function() {
+    window.location.assign("index.html");
+})
+//clearing highscores off page and localStorage
+clearBtn.addEventListener("click", function() {
+    localStorage.clear();
+    highScores.innerHTML = "";
+})
+
+//Renders highscores to the page
 function displayScores() {
-    console.log("works");
     if (localStorage.getItem("Scores") === null) {
         scoresArr = [];
     }
     else {
-        console.log("works");
+        
         scoresArr = JSON.parse(localStorage.getItem("Scores"));
     }
     scoresArr.forEach((score) => {
@@ -12,7 +27,6 @@ function displayScores() {
         var listItems = document.createElement("li");
         listItems.textContent = score;
         appendListItems.append(listItems);
-        console.log("score ", score);
     })
 }
 
