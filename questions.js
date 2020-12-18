@@ -102,30 +102,31 @@ function checkAnswer() {
 }
 
 function submitScore() {
+
     var scoresArr = JSON.parse(localStorage.getItem("Scores")) || [];
-    scoresArr.push({
-        totalScore: initials.value + " - " + time,
-    })
+    scoresArr.push(initials.value + " - " + time);
     localStorage.setItem("Scores", JSON.stringify(scoresArr))
     window.location.assign("highscores.html")
-    displayScores();
 }
 
-function displayScores() {
-    if (localStorage.getItem("Scores") === null) {
-        scoresArr = [];
-    }
-    else {
-        scoresArr = JSON.parse(localStorage.getItem("Scores"));
-    }
-    scoresArr.forEach((score)=>{
-        console.log("score ", score);
-    })
-    var appendListItems = document.getElementById("highscore");
-    var listItems = document.createElement("li");
-    listItems.textContent = " ";
-
-}
+// function displayScores() {
+//     window.location.assign("highscores.html")
+//     console.log("works");
+//     if (localStorage.getItem("Scores") === null) {
+//         scoresArr = [];
+//     }
+//     else {
+//         console.log("works");
+//         scoresArr = JSON.parse(localStorage.getItem("Scores"));
+//     }
+//     scoresArr.forEach((score)=>{
+//         var appendListItems = document.querySelector(".highscore");
+//     var listItems = document.createElement("li");
+//     listItems.textContent = score;
+//     appendListItems.append(listItems);
+//         console.log("score ", score);
+//     })
+// }
 
 
 
