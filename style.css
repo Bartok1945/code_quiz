@@ -1,7 +1,30 @@
+
+#click-start  {
+    text-align: center;
+    padding: 100px;
+    width: 841px;
+    margin: 0 auto;
+    
+}
+
+
 .wrapper {
+    text-align: center;
+    padding: 100px;
+    width: 841px;
+    margin: 0 auto;
     display: none;
 }
 
 #enter-initials {
     display: none;
+}
+
+.btn-group-vertical {
+    padding: 20px;
+}
+
+.answerbtn {
+    padding: 10px;
+    background-color: #199E11;
 }

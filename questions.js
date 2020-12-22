@@ -31,7 +31,7 @@ var questions = [
     },
 ];
 var score = 0;
-var time = 100;
+var time = 75;
 var secondsLeft = document.querySelector(".seconds-left");
 var currentIndex;
 var startBtn = document.getElementById("click-start");
@@ -69,7 +69,7 @@ function startQuiz() {
     startBtn.style.display = 'none';
     showQuestions.style.display = "block";
     currentIndex = 0;
-    time = 100;
+    time = 75;
     renderQuestion();
     setTime();
 }
@@ -82,10 +82,10 @@ for (var i = 0; i < answerBtns.length; i++) {
 //Validating answers and checks quiz progress
 function checkAnswer() {
     if (this.textContent === questions[currentIndex].answer) {
-        time += 5;
+        time += 15;
     }
     else {
-        time -= 5;
+        time -= 15;
     }
     currentIndex++;
     if (currentIndex === questions.length) {
